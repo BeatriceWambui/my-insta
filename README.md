@@ -1,14 +1,13 @@
 # PROJECT NAME:
      my-insta
 
-## PROJECT AUTHOR:
-    Beatrice Wambui
-
 ## PROJECT DESCRIPTION:
    This is an instagram clone project, that is build in Python/Django.
 
 ## PROJECT LIVE LINK:
     The live link to the actual view of the project is 
+    For more on deployment to Heroku you can follow this documentation link:
+<a href='https://devcenter.heroku.com/categories/reference'>Heroku</a>
 
 ## PROJECT USER-STORY:
     A user is able to sign in to use this application.
@@ -16,6 +15,7 @@
     A user is able to see their profile photos and all photos the have uploaded.
     A user is able to follow other users and see their photos.
     A user is able to like photos and leave comments.
+
 ## PROJECT INSTALLATION & SETUP INSTRUCTIONS:
 ### Project installation:
     For the project installation process you need the basic installations on your local machine, This include Django,bootstrap  just to mention a few but you can get all they required information on how to get strated in the Django documentation. The   link below leads you to the documentations you can click on it for more information.
@@ -32,12 +32,14 @@
     > You can now work on the project if so you will. 
 
 ## TECHNOLOGIES USED IN THIS PROJECT:
+* Python3 
 * Django 1.11
 * Bootstrap3
 * css
-* javascript
-* jquery
 * markdown
+
+## PROJECT AUTHOR:
+    Beatrice Wambui
 
 ## LICENSE & COPYRIGHT INFORMATION:
     This project is licensed and below is the link to the license I used feel free to view it:
