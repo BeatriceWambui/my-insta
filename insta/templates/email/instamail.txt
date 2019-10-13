@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to Instagram where all your best lies.
