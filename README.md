@@ -22,7 +22,8 @@
  <a href="https://docs.djangoproject.com/en/ 2.2/">Django  </a>
  <a href="https://docs.python.org/3/">Python</a>
  <a href="https://stackoverflow.com/">Stack-overflow</a>
-    
+    for installation of registration we user django-registration.The documentation below:
+<a href="https://django-registration.readthedocs.io/en/2.3/index.html">registration</a>
 ### Setup instractions:
     In your local machine you can get the project by following the instructions below:
     > Navigate to the folder where you would like the project to be held (eg) Documents
