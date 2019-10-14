@@ -20,6 +20,7 @@ class Image(models.Model):
 
 class Profile(models.Model):
     bio = models.CharField(max_length=50)        
-
+    user = models.IntegerField(default=0)
+    
     def __str__(self):
         return self.bio
