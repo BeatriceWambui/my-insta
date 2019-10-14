@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from tinymce.models import HTMLField
-
 
 # Create your models here.
 
@@ -10,15 +8,18 @@ class InstaLetterRecipient(models.Model):
     second_name = models.CharField(max_length=30)
     email = models.EmailField()
 
+class Image(models.Model):
+    image_name = models.CharField(max_length=30)
+    image_caption = models.CharField(max_length=30)
+    profile = models.ForeignKey(User,null=True)
+    likes = models.CharField(max_length=50)
+    comments = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.image_name
+
 class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to='picture/',null=True)
-    bio = HTMLField()
-    username = models.CharField(max_length=30,blank=True)
-    user_id = models.IntegerField(default=0)
-    
+    bio = models.CharField(max_length=50)        
+
     def __str__(self):
         return self.bio
-
-    def save_profile(self):
-        self.save()
-
