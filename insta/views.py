@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404,HttpResponseRedirect
-from .forms import InstaForm
+from .forms import InstaForm,CommentForm
 from .models import Image,Profile
 from django.contrib.auth.models import User
 from .email import send_email
@@ -9,11 +9,12 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/accounts/login/')
 def index(request):
     current_user =request.user
+    commentform =CommentForm()
     post = Image.images_all()
     profile = Profile.objects.all()
     users = Profile.objects.all()
     following = User.objects.all().exclude(id=request.user.id)
-    return render(request,'blueprint/index.html',{'post':post,'profile':profile,'users':users,'following':following})
+    return render(request,'blueprint/index.html',{'post':post,'profile':profile,'users':users,'following':following,'commentform':commentform})
 
 
 @login_required(login_url='/accounts/login/')
@@ -31,7 +32,7 @@ def mysubscribe(request):
         
     else:
         form = InstaForm()
-    return render(request,'blueprint/index.html.html',{'instaForm':form})
+    return render(request,'blueprint/index.html',{'instaForm':form})
 
 def search_results(request):
     if 'image_name' in request.GET and request.GET['image_name']:
@@ -47,4 +48,16 @@ def search_results(request):
 def profile(request):
     current_user=request.user
     post=Image.objects.filter(profile_id=current_user.id)
-    return render(request,'blueprint/profile.html',{'post':post,})
+    return render(request,'blueprint/profile.html',{'post':post})
+
+def comment(request):
+    if request.method == 'POST':
+        myform=CommentForm(request.POST)
+        if myform.is_valid():
+            comment = myform.cleaned_data['comment']
+            recipient = CommentFormRecipients(comment=comment)
+            recipient.save()
+            HttpResponseRedirect('index')
+    else:
+            myform = CommentForm()
+    return render(request,'blueprint/index.html',{'myform':myform})
