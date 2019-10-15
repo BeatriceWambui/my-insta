@@ -39,3 +39,9 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
  
+
+class CommentFormRecipient(models.Model):
+    comment = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.comment
