@@ -3,5 +3,57 @@
 {% block content %}
 {{block.super}} 
 
+<div class="container">
+    {% for posts in post %}
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card " style="width:400px">
+        <img class="card-img-top" src="{{posts.image.url}}" alt="Card image">
+        <div class="card-body">
+          <div class=" row">
+            <div class="col-md-4">
+                <p class="card-text"> <img src="/static/insta2.png" height="30px" width="30px" alt=""> {{posts.likes}}</p>
+            </div>
+            <div class="col-md-8">
+                <button type="button" class="btn btn-success"> <img src="/static/insta3.jpeg" width="30px" height="30px" alt=""> Follow</button>        </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card " id="sticky" style="width:400px">
+          <div class="card-body">
+            <h4 class="card-title">{{posts.image_name}}</h4>
+            <p class="card-text">{{posts.comments}}</p>
+            <a href="{% url 'profile' %}" class="btn btn-success">See Profile</a>
+          </div>
+       </div>
+    </div>
+
+  
+  </div>
+
+      {% empty %}
+      <div class="row">
+        <h2 class="text-center">That is invalid</h2>
+      </div>
+      {% endfor %} 
+
+
+      {%for image in images%}
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <h2 class="text-center"> {{ image.title }} </h2>
+        </div>
+    
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <img src="{{image.image.url}}" class="img-responsive" alt="Image">
+        </div>
+    
+      </div>
+      {% endfor %}
+  
+</div>
+
 
 {%endblock%}
