@@ -9,18 +9,33 @@ class InstaLetterRecipient(models.Model):
     email = models.EmailField()
 
 class Image(models.Model):
+    image =models.ImageField(upload_to ='photos/',null=True)
     image_name = models.CharField(max_length=30)
     image_caption = models.CharField(max_length=30)
     profile = models.ForeignKey(User,null=True)
     likes = models.CharField(max_length=50)
     comments = models.CharField(max_length=50)
+      
+    @classmethod
+    def images_all(cls):
+        post = Image.objects.all()
+        return post
+
+    @classmethod
+    def search_by_image_name(cls,search_term):
+        insta = cls.objects.filter(title__icontains=search_term)
+        return insta
 
     def __str__(self):
         return self.image_name
 
 class Profile(models.Model):
+    profile_image = models.ImageField(upload_to='photos/',null=True,default ='default.jpg')
     bio = models.CharField(max_length=50)        
-    user = models.IntegerField(default=0)
-    
+    username = models.OneToOneField(User,unique = True, on_delete=models.CASCADE)
+
     def __str__(self):
-        return self.bio
+        return f'{self.username.username} Profile'
+    def save_profile(self):
+        self.save()
+ 
