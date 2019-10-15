@@ -5,7 +5,8 @@
    This is an instagram clone project, that is build in Python/Django.
 
 ## PROJECT LIVE LINK:
-    The live link to the actual view of the project is 
+    The live link to the actual view of the project is:
+ <a href=' https://insta4306.herokuapp.com/'>link</a> 
     For more on deployment to Heroku you can follow this documentation link:
 <a href='https://devcenter.heroku.com/categories/reference'>Heroku</a>
 
