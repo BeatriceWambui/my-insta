@@ -3,10 +3,3 @@ h1{
     font-family: 'Abril Fatface', cursive;
     text-align:center
 }
-
-#sticky{
-        position : fixed;
-        top: 0;
-        right: 0;
-      
-}
