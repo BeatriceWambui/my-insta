@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+{% if image.profile == username %}
     <div class="cotenet-section">
         <div class="media">
             <img class="rounded-circle account-img" src="{{user.profile.profile_image.url }}" height="200px" width="200px" alt="">
@@ -9,5 +10,7 @@
                 <p class="text-secondary">{{user.email }}</p>
             </div>
         </div>
+        <a class="btn btn-success" href="http://127.0.0.1:8000/admin/insta/profile/"> change profile </a>
     </div>
+{% endif %}
 {% endblock content %}
