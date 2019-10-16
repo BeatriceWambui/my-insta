@@ -45,6 +45,9 @@
           <div class="card-body">
             <h4 class="card-title">{{posts.image_name}}</h4>
             <p class="card-text">{{posts.comments}}</p>
+            {% for comment in comments %}
+              <p class="card-text">{{ comment.comment }}</p>
+            {% endfor %}
             <p class="card-text">{{posts.image_caption}}</p>
             <a href="{% url 'profile' %}" class="btn btn-success">See Profile</a>
           </div>

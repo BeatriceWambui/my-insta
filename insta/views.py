@@ -5,16 +5,18 @@ from .models import Image,Profile
 from django.contrib.auth.models import User
 from .email import send_email
 from django.contrib.auth.decorators import login_required
+from .models import CommentFormRecipient
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
     current_user =request.user
+    comments = CommentFormRecipient.objects.all()
     commentform =CommentForm()
     post = Image.images_all()
     profile = Profile.objects.all()
     users = Profile.objects.all()
     following = User.objects.all().exclude(id=request.user.id)
-    return render(request,'blueprint/index.html',{'post':post,'profile':profile,'users':users,'following':following,'commentform':commentform})
+    return render(request,'blueprint/index.html',{'post':post,'comments':comments,'profile':profile,'users':users,'following':following,'commentform':commentform})
 
 
 @login_required(login_url='/accounts/login/')
@@ -85,7 +87,8 @@ def upload(request):
             image = form.cleaned_data['image']
             image_name = form.cleaned_data['image_name']
             image_caption = form.cleaned_data['image_caption']
-            saveImage = Image(image=image,image_name=image_name,image_caption=image_caption)
+            current_user = request.user
+            saveImage = Image(image=image,image_name=image_name,image_caption=image_caption,profile=current_user)
             saveImage.save()
             return redirect(index)
     else:
