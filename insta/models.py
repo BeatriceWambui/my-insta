@@ -13,9 +13,12 @@ class Image(models.Model):
     image_name = models.CharField(max_length=30)
     image_caption = models.CharField(max_length=30)
     profile = models.ForeignKey(User,null=True)
-    likes = models.CharField(max_length=50)
+    likes = models.ManyToManyField(User, related_name= 'likes', blank = True)
     comments = models.CharField(max_length=50, null=True)
-      
+    
+    def total_likes(self):
+        self.likes.count()
+
     @classmethod
     def images_all(cls):
         post = Image.objects.all()

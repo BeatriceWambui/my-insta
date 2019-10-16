@@ -16,7 +16,11 @@
         <div class="card-body">
           <div class=" row">
             <div class="col-md-4">
-                <p class="card-text"> <img src="/static/insta2.png" height="30px" width="30px" alt=""> {{posts.likes}}</p>
+                <div class="iconic ml-2">
+                    <a class='info' href="{% url 'likePost' posts.id %}">
+                      <i style="font-size: 20px; margin-left: 15px;margin-top: 15px;"> <img src="/static/insta2.png" height="20px" width="20px"></i>
+                    </a><span style="font-size:25px;">{{posts.likes.count}}</span>
+                  </div>
             </div>
             <div class="col-md-8">
                 <button type="button" class="btn btn-success"> <img src="/static/insta3.jpeg" width="30px" height="30px" alt=""> Follow</button>        </div>
@@ -52,15 +56,15 @@
 
       {% empty %}
       <div class="row">
-        <h2 class="text-center">That is invalid</h2>
+        <h2 class="text-center">Welcome to instagram</h2>
       </div>
       {% endfor %} 
-
-
-      {%for image in images%}
+   
+      {%for image in images%}     
+      
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <h2 class="text-center"> {{ image.title }} </h2>
+          <h2 class="text-center"> {{ image.image_name }} </h2>
         </div>
     
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

@@ -61,3 +61,17 @@ def comment(request):
     else:
             myform = CommentForm()
     return render(request,'blueprint/index.html',{'myform':myform})
+
+@login_required(login_url='/accounts/login/')
+def likePost(request,image_id):
+
+        image = Image.objects.get(pk = image_id)
+
+        if image.likes.filter(id = request.user.id).exists():
+            image.likes.remove(request.user)
+            is_liked = False
+        else:
+            image.likes.add(request.user)
+            is_liked = True
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Image
+from .models import Image,Profile
 # # Create your tests here.
 
 class ImageTestClass(TestCase):
@@ -22,7 +22,7 @@ class ImageTestClass(TestCase):
 
 class ProfileTestClass(TestCase):
     def setUp(self):
-        self.profile=Profile(name='profile',)
+        self.profile=Profile()
         self.profile.save_profile()
 
     def test_instance(self):
@@ -40,7 +40,7 @@ class ProfileTestClass(TestCase):
 
 class CommentTestClass(TestCase):
     def setUp(self):
-        self.comment=Comment(name='comment',)
+        self.comment=Comment()
         self.comment.save_comment()
 
     def test_instance(self):
