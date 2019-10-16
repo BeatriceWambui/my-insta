@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import Http404,HttpResponseRedirect
-from .forms import InstaForm,CommentForm
+from .forms import InstaForm,CommentForm,ImageUploadForm
 from .models import Image,Profile
 from django.contrib.auth.models import User
 from .email import send_email
@@ -75,3 +75,22 @@ def likePost(request,image_id):
             is_liked = True
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@login_required(login_url='/accounts/login/')
+def upload(request):
+    
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST,request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            image_name = form.cleaned_data['image_name']
+            image_caption = form.cleaned_data['image_caption']
+            saveImage = Image(image=image,image_name=image_name,image_caption=image_caption)
+            saveImage.save()
+            return redirect(index)
+    else:
+        form = ImageUploadForm()
+        return render(request,'blueprint/upload.html',{'form':form})
+            
+             
+

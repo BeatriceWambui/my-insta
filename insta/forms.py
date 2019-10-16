@@ -1,5 +1,5 @@
 from django import forms
-from .models import CommentFormRecipient
+from .models import CommentFormRecipient,Image
 
 class InstaForm(forms.Form):
     first_name = forms.CharField(label='First Name',max_length=30)
@@ -11,4 +11,7 @@ class CommentForm(forms.ModelForm):
         model = CommentFormRecipient
         fields=('comment',)
 
-
+class ImageUploadForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields=['image','image_name','image_caption']
