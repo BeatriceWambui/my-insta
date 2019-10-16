@@ -44,6 +44,9 @@ class Profile(models.Model):
         return f'{self.username.username} Profile'
     def save_profile(self):
         self.save()
+
+    def delete_profile(self):
+        self.delete()
  
 
 class CommentFormRecipient(models.Model):
