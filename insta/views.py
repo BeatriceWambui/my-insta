@@ -78,7 +78,6 @@ def likePost(request,image_id):
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-@login_required(login_url='/accounts/register/')
 def upload(request):
     
     if request.method == 'POST':
