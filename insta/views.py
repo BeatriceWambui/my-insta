@@ -7,7 +7,7 @@ from .email import send_email
 from django.contrib.auth.decorators import login_required
 from .models import CommentFormRecipient
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/register/')
 def index(request):
     current_user =request.user
     comments = CommentFormRecipient.objects.all()
@@ -19,7 +19,7 @@ def index(request):
     return render(request,'blueprint/index.html',{'post':post,'comments':comments,'profile':profile,'users':users,'following':following,'commentform':commentform})
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/register/')
 def mysubscribe(request):
     if request.method == 'POST':
         form = InstaForm(request.POST)
@@ -64,7 +64,7 @@ def comment(request):
             myform = CommentForm()
     return render(request,'blueprint/index.html',{'myform':myform})
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/register/')
 def likePost(request,image_id):
 
         image = Image.objects.get(pk = image_id)
@@ -78,7 +78,7 @@ def likePost(request,image_id):
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/register/')
 def upload(request):
     
     if request.method == 'POST':
