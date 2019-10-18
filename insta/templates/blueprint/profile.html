@@ -1,7 +1,17 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% extends 'base.html'%}
+{% load bootstrap4 %}
 {% block content %}
+{{block.super}} 
+
+    <form action="{% url 'uploadProfile' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{forms}}
+        <input class="btn btn-success" value="Submit" type="submit">
+
+    </form>
+
 {% if image.profile == username %}
+
     <div class="cotenet-section">
         <div class="media">
             <img class="rounded-circle account-img" src="{{user.profile.profile_image.url }}" height="200px" width="200px" alt="">
@@ -13,4 +23,4 @@
         <a class="btn btn-success" href="http://127.0.0.1:8000/admin/insta/profile/"> change profile </a>
     </div>
 {% endif %}
-{% endblock content %}
+{% endblock %}

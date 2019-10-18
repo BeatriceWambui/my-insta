@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import Http404,HttpResponseRedirect
-from .forms import InstaForm,CommentForm,ImageUploadForm
 from .models import Image,Profile
 from django.contrib.auth.models import User
 from .email import send_email
 from django.contrib.auth.decorators import login_required
 from .models import CommentFormRecipient
+from .forms import InstaForm,CommentForm,ImageUploadForm,UploadProfileForm
+
 # Create your views here.
 @login_required(login_url='/accounts/register/')
 def index(request):
@@ -38,7 +39,7 @@ def mysubscribe(request):
 
 def search_results(request):
     if 'image_name' in request.GET and request.GET['image_name']:
-        search_term = request.GET.get('image_~name')
+        search_term = request.GET.get('image_name')
         searched_post = Image.search_by_image_name(search_term)
         message = f'{search_term}'
 
@@ -50,7 +51,8 @@ def search_results(request):
 def profile(request):
     current_user=request.user
     post=Image.objects.filter(profile_id=current_user.id)
-    return render(request,'blueprint/profile.html',{'post':post})
+    form = UploadProfileForm()
+    return render(request,'blueprint/profile.html',{'post':post,'forms':form})
 
 def comment(request):
     if request.method == 'POST':
@@ -78,6 +80,7 @@ def likePost(request,image_id):
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+@login_required(login_url='/accounts/register/')
 def upload(request):
     
     if request.method == 'POST':
@@ -94,5 +97,15 @@ def upload(request):
         form = ImageUploadForm()
         return render(request,'blueprint/upload.html',{'form':form})
             
-             
+def uploadProfile(request):   
+    if request.method == 'POST':
+        forms = UploadProfileForm(request.POST,request.FILES)
+        if forms.is_valid():
+            profile_image=form.cleaned_data['profile_image']
+            saveProfile  = Profile(profile_image=profile_image)
+            saveProfile.save()
+            return redirect(index)
+    else:
+        forms=UploadProfileForm()
+        return render(request,'blueprint/profile.html',{'forms':forms})
 
