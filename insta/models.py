@@ -39,7 +39,7 @@ class Image(models.Model):
         self.delete()
 
 class Profile(models.Model):
-    profile_image = models.ImageField(upload_to='photos/',null=True,default ='default.jpg')
+    profile_image = models.ImageField(upload_to='photos/',null=True,default ='photos/default.jpg')
     bio = models.CharField(max_length=50)        
     username = models.OneToOneField(User,unique = True, on_delete=models.CASCADE)
 
