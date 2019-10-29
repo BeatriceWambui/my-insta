@@ -11,7 +11,7 @@
     {% for posts in post %}
   <div class="row">
     <div class="col-md-8">
-      <div class="card " style="width:400px">
+      <div class="card " style="width:300px" >
         <img class="card-img-top" src="{{posts.image.url}}" alt="Card image">
         <div class="card-body">
           <div class=" row">
@@ -28,7 +28,7 @@
           </div>
       </div> <br>
       <div class="row">
-          <div class="col-md-7">
+          <div class="col-md-5">
               <form  action="{%url 'index'%}" method="post">
                   {%csrf_token%}
               
@@ -36,12 +36,12 @@
                   <input type="submit" value="Comment">
                 </form>
           </div>
-          <div class="col-md-5"></div>
+          <div class="col-md-7"></div>
       </div>
 
     </div>
     <div class="col-md-4">
-      <div class="card " id="sticky" style="width:400px">
+      <div class="card " id="sticky" style="width:300px; padding-left:10%"">
           <div class="card-body">
             <h4 class="card-title">{{posts.image_name}}</h4>
             <p class="card-text">{{posts.comments}}</p>
