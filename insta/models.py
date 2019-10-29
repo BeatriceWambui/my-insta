@@ -15,7 +15,7 @@ class Image(models.Model):
     profile = models.ForeignKey(User,null=True)
     likes = models.ManyToManyField(User, related_name= 'likes', blank = True)
     comments = models.CharField(max_length=50, null=True)
-    
+
     def total_likes(self):
         self.likes.count()
 
@@ -26,7 +26,7 @@ class Image(models.Model):
 
     @classmethod
     def search_by_image_name(cls,search_term):
-        insta = cls.objects.filter(title__icontains=search_term)
+        insta = cls.objects.filter(image_name__icontains=search_term)
         return insta
 
     def __str__(self):
@@ -40,7 +40,7 @@ class Image(models.Model):
 
 class Profile(models.Model):
     profile_image = models.ImageField(upload_to='photos/',null=True,default ='photos/default.jpg')
-    bio = models.CharField(max_length=50)        
+    bio = models.CharField(max_length=50)
     username = models.OneToOneField(User,unique = True, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -50,13 +50,13 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
- 
+
 
 class CommentFormRecipient(models.Model):
     comment = models.CharField(max_length=250)
     image = models.ForeignKey(Image,on_delete=models.CASCADE,related_name='comment')
     username = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='comment')
-    
+
     def __str__(self):
         return self.comment
 
@@ -65,4 +65,3 @@ class CommentFormRecipient(models.Model):
 
     def delete_comment(self):
         self.delete()
-

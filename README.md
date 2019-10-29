@@ -2,11 +2,11 @@
      my-insta
 
 ## PROJECT DESCRIPTION:
-   This is an instagram clone project, that is build in Python/Django.
-
+   This is an instagram clone project, that is build in Python/Django.This app is built to help helps users upload their photos see other user photos and also like their photos you can also leave a comment.
+   
 ## PROJECT LIVE LINK:
     The live link to the actual view of the project is:
- <a href=' https://insta4306.herokuapp.com/'>link</a> 
+ <a href=' https://insta4306.herokuapp.com/'>link</a>
     For more on deployment to Heroku you can follow this documentation link:
 <a href='https://devcenter.heroku.com/categories/reference'>Heroku</a>
 
@@ -31,15 +31,15 @@
     > Copy the github link on the clone button and open the terminal (ctr+alt+t) and clone the project to get the exact copy in your machine : git clone https://github.com/BeatriceWambui/my-insta.git
     > To open the directory that hosts your project use the command (cd my-insta) where my-insta is the name of the project.
     > To open the project on a text editor you can use the commands for Visual Studio(code .) for atom( atom .) and others according to the text editor you preffer.
-    > You can now work on the project if so you will. 
+    > You can now work on the project if so you will.
 
 ## TECHNOLOGIES USED IN THIS PROJECT:
-* Python3 
+* Python3
 * Django 1.11
 * Bootstrap3
 * css
 * markdown
-
+\
 ## PROJECT AUTHOR:
     Beatrice Wambui
 
@@ -51,5 +51,4 @@
 
 ## CONTACT INFORMATION
  To reach me you can use the email below:
-**wachirabeatice2020@gmail.com** 
-
+**wachirabeatice2020@gmail.com**

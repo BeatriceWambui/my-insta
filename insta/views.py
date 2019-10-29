@@ -38,12 +38,12 @@ def mysubscribe(request):
     return render(request,'blueprint/index.html',{'instaForm':form})
 
 def search_results(request):
-    if 'image_name' in request.GET and request.GET['image_name']:
-        search_term = request.GET.get('image_name')
-        searched_post = Image.search_by_image_name(search_term)
+    if 'post' in request.GET and request.GET['post']:
+        search_term = request.GET.get('post')
+        searched_posts = Image.search_by_image_name(search_term)
         message = f'{search_term}'
 
-        return render(request,'templates/search.html',{'message':message,'post':searched_post})
+        return render(request,'templates/search.html',{'message':message,'post':searched_posts})
     else:
         message = 'What you searched for does not exist'
         return render(request,'search.html',{'message':message})
