@@ -7,5 +7,12 @@ h1{
     background-image: url(/static/pic5.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    backface-visibility: inherit;
+    background-attachment: fixed;
+
+}
+
+#sticky{
+    font-family: 'Abril Fatface', cursive;
 
 }
