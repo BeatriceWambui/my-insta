@@ -3,3 +3,9 @@ h1{
     font-family: 'Abril Fatface', cursive;
     text-align:center
 }
+.container{
+    background-image: url(/static/pic5.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}

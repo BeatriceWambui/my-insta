@@ -2,13 +2,21 @@
 {% load bootstrap4 %}
 {% block content %}
 {{block.super}} 
-
-    <form action="{% url 'uploadProfile' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{forms}}
-        <input class="btn btn-success" value="Submit" type="submit">
-
-    </form>
+<div class="container" style="color:aliceblue">
+        <a class="btn btn-default" href="{%url 'index'%}" style="padding-left:43%"> home </a>
+ 
+    <div class="row" style="padding-top:20%">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form action="{% url 'uploadProfile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{forms}}
+                <input class="btn btn-success" value="Submit" type="submit">
+        
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
 {% if image.profile == username %}
 
@@ -20,7 +28,7 @@
                 <p class="text-secondary">{{user.email }}</p>
             </div>
         </div>
-        <a class="btn btn-success" href="{%url 'index'%}"> home </a>
     </div>
 {% endif %}
+</div>
 {% endblock %}
